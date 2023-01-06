@@ -1,11 +1,28 @@
 const joi = require('joi');
 const express = require('express');
+
+//for securing using various http headers
+const helmet=require('helmet')
+
+
+//for logger
+const morgan = require('morgan');
 const app = express();
 
 
-//for body parsing
 
+//process.env.NODE_ENV //for defalut its undefined;
+
+// console.log(process.env.NODE_ENV);
+// console.log(app.get('env'));
+
+
+// to change env do:
+// export NODE_ENV=
+//for body parsing
 app.use(express.json());
+app.use(helmet());
+if(app.get('env')=="development")app.use(morgan('tiny'));
 
 const cources = [
     {
