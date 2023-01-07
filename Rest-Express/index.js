@@ -32,7 +32,7 @@ const app = express();
 
 
 app.set('view engine','pug')
-
+app.set('views', './views');
 
 
 //to set custom template;
@@ -83,7 +83,8 @@ function validateCourse(cource) {
 };
 
 app.get('/', (req, res) => {
-    res.send("Hello"); 
+    //res.send("Hello"); 
+    res.render('index', { title: "App", message: "Hello" });
 });
 app.get('/api/cources', (req, res) => {
     res.send([1, 2, 3]); 
