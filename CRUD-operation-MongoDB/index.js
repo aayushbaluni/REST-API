@@ -1,8 +1,21 @@
 const mongoose=require('mongoose');
 mongoose.set('strictQuery', true);
+
+//to start a database in a folder:
+
+//sudo mkdir -p /data/db
+
+//give permission:
+//sudo chown -R `id -un` /data/db
+
+// then run 
+//mongod
+
 mongoose.connect('mongodb://localhost/playground').then(() => {
     console.log("Connected to Mongodb");
 }).catch(err => console.log(err)); 
+
+
 
 //schema is used to define shape of document within the collection in mongodb
 
