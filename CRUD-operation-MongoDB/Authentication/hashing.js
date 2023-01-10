@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 
 async function run() {
     
@@ -12,4 +12,18 @@ async function run() {
     //similarly to decrypt or to compare;
     //bcrypt.compare(user.pass,req.body.pass)
 }
-run();
+//run();
+
+
+//to get various tokens
+
+const tokens = jwt.sign({
+    //here it is the content of the token
+    _id: 1
+},
+    //this is the private key
+    //recommended to use it and store in an env variable
+    "PRIVATEKEY"
+
+);
+console.log(tokens);

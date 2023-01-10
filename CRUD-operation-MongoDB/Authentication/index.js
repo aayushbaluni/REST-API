@@ -1,6 +1,6 @@
 //authentication -> process of identifying 
 //authorisation -> if user have rights to perform
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); 
 const _ = require("lodash");
 const { User, validate } = require('./users');
 const mongoose = require('mongoose');
@@ -27,8 +27,10 @@ router.post('/', async (req, res) => {
     user=new User(_.pick(req.body,['name','email','password']))
     await user.save();
 
-    
-    res.send(_.pick(user, ['id','name', 'email'])); 
+    //send a heafer or token also
+    res
+     //   .header("x-customName",token)
+        .send(_.pick(user, ['id', 'name', 'email'])); 
 
 });
 
